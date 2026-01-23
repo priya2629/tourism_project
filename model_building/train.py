@@ -20,9 +20,7 @@ import mlflow
 mlflow.set_tracking_uri("http://localhost:5000")
 mlflow.set_experiment("MLOps_experiment")
 
-api = HfApi()
 
-os.environ["MLOps"]= "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"
 api = HfApi(token=os.getenv("MLOps"))
 
 
@@ -126,9 +124,9 @@ with mlflow.start_run():
 
     mlflow.log_params(grid_search.best_params_)
 
-    
+
     # Save Model
-    
+
     MODEL_NAME = "best_tourism_project_v1.joblib"
     joblib.dump(best_model, MODEL_NAME)
 
